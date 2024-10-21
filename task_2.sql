@@ -1,13 +1,13 @@
 -- Use the alx_book_store database
 USE alx_book_store;
 
--- Create the authors table
+-- Create the AUTHORS table
 CREATE TABLE IF NOT EXISTS AUTHORS (
     AUTHOR_ID INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key
     AUTHOR_NAME VARCHAR(215) NOT NULL          -- Author Name
 );
 
--- Create the books table
+-- Create the BOOKS table
 CREATE TABLE IF NOT EXISTS BOOKS (
     BOOK_ID INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
     TITLE VARCHAR(130) NOT NULL,                -- Book Title
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS BOOKS (
     FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHORS(AUTHOR_ID) ON DELETE CASCADE  -- Relationship to AUTHORS
 );
 
--- Create the customers table
+-- Create the CUSTOMERS table
 CREATE TABLE IF NOT EXISTS CUSTOMERS (
     CUSTOMER_ID INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
     CUSTOMER_NAME VARCHAR(215) NOT NULL,        -- Customer Name
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS CUSTOMERS (
     ADDRESS TEXT                                 -- Customer Address
 );
 
--- Create the orders table
+-- Create the ORDERS table
 CREATE TABLE IF NOT EXISTS ORDERS (
     ORDER_ID INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
     CUSTOMER_ID INT,                             -- Foreign Key referencing CUSTOMERS
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS ORDERS (
     FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMERS(CUSTOMER_ID) ON DELETE CASCADE  -- Relationship to CUSTOMERS
 );
 
--- Create the order_details table
+-- Create the ORDER_DETAILS table
 CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
     ORDERDETAILID INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
     ORDER_ID INT,                                 -- Foreign Key referencing ORDERS

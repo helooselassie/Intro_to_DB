@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS authors (
 );
 
 -- Create the books table
+-- Books
 CREATE TABLE IF NOT EXISTS books (
     book_id INT AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(130) NOT NULL,
@@ -19,6 +20,7 @@ CREATE TABLE IF NOT EXISTS books (
 );
 
 -- Create the customers table
+-- Customers
 CREATE TABLE IF NOT EXISTS customers (
     customer_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_name VARCHAR(215) NOT NULL,
@@ -27,6 +29,7 @@ CREATE TABLE IF NOT EXISTS customers (
 );
 
 -- Create the orders table
+-- Orders
 CREATE TABLE IF NOT EXISTS orders (
     order_id INT AUTO_INCREMENT PRIMARY KEY,
     customer_id INT,
@@ -35,6 +38,7 @@ CREATE TABLE IF NOT EXISTS orders (
 );
 
 -- Create the order_details table
+-- Order Details
 CREATE TABLE IF NOT EXISTS order_details (
     orderdetailid INT AUTO_INCREMENT PRIMARY KEY,
     order_id INT,

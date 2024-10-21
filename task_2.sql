@@ -2,43 +2,43 @@
 USE alx_book_store;
 
 -- Create the AUTHORS table
-CREATE TABLE IF NOT EXISTS AUTHORS (
-    AUTHOR_ID INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key
-    AUTHOR_NAME VARCHAR(215) NOT NULL          -- Author Name
+CREATE TABLE IF NOT EXISTS Authors (
+    author_id INT AUTO_INCREMENT PRIMARY KEY,  -- Primary Key
+    author_name VARCHAR(215) NOT NULL          -- Author Name
 );
 
 -- Create the BOOKS table
-CREATE TABLE IF NOT EXISTS BOOKS (
-    BOOK_ID INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
-    TITLE VARCHAR(130) NOT NULL,                -- Book Title
-    AUTHOR_ID INT,                              -- Foreign Key referencing AUTHORS
-    PRICE DOUBLE NOT NULL,                      -- Book Price
-    PUBLICATION_DATE DATE,                      -- Publication Date
-    FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHORS(AUTHOR_ID) ON DELETE CASCADE  -- Relationship to AUTHORS
+CREATE TABLE IF NOT EXISTS Books (
+    book_id INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
+    title VARCHAR(130) NOT NULL,                -- Book Title
+    author_id INT,                              -- Foreign Key referencing Authors
+    price DOUBLE NOT NULL,                      -- Book Price
+    publication_date DATE,                      -- Publication Date
+    FOREIGN KEY (author_id) REFERENCES Authors(author_id) ON DELETE CASCADE  -- Relationship to Authors
 );
 
 -- Create the CUSTOMERS table
-CREATE TABLE IF NOT EXISTS CUSTOMERS (
-    CUSTOMER_ID INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
-    CUSTOMER_NAME VARCHAR(215) NOT NULL,        -- Customer Name
-    EMAIL VARCHAR(215) UNIQUE NOT NULL,         -- Customer Email
-    ADDRESS TEXT                                 -- Customer Address
+CREATE TABLE IF NOT EXISTS Customers (
+    customer_id INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    customer_name VARCHAR(215) NOT NULL,        -- Customer Name
+    email VARCHAR(215) UNIQUE NOT NULL,         -- Customer Email
+    address TEXT                                 -- Customer Address
 );
 
 -- Create the ORDERS table
-CREATE TABLE IF NOT EXISTS ORDERS (
-    ORDER_ID INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
-    CUSTOMER_ID INT,                             -- Foreign Key referencing CUSTOMERS
-    ORDER_DATE DATE NOT NULL,                    -- Order Date
-    FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMERS(CUSTOMER_ID) ON DELETE CASCADE  -- Relationship to CUSTOMERS
+CREATE TABLE IF NOT EXISTS Orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,     -- Primary Key
+    customer_id INT,                             -- Foreign Key referencing Customers
+    order_date DATE NOT NULL,                    -- Order Date
+    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id) ON DELETE CASCADE  -- Relationship to Customers
 );
 
 -- Create the ORDER_DETAILS table
-CREATE TABLE IF NOT EXISTS ORDER_DETAILS (
-    ORDERDETAILID INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
-    ORDER_ID INT,                                 -- Foreign Key referencing ORDERS
-    BOOK_ID INT,                                  -- Foreign Key referencing BOOKS
-    QUANTITY DOUBLE NOT NULL,                     -- Quantity of Books Ordered
-    FOREIGN KEY (ORDER_ID) REFERENCES ORDERS(ORDER_ID) ON DELETE CASCADE,   -- Relationship to ORDERS
-    FOREIGN KEY (BOOK_ID) REFERENCES BOOKS(BOOK_ID) ON DELETE CASCADE       -- Relationship to BOOKS
+CREATE TABLE IF NOT EXISTS Order_Details (
+    orderdetailid INT AUTO_INCREMENT PRIMARY KEY, -- Primary Key
+    order_id INT,                                 -- Foreign Key referencing Orders
+    book_id INT,                                  -- Foreign Key referencing Books
+    quantity DOUBLE NOT NULL,                     -- Quantity of Books Ordered
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,   -- Relationship to Orders
+    FOREIGN KEY (book_id) REFERENCES Books(book_id) ON DELETE CASCADE       -- Relationship to Books
 );

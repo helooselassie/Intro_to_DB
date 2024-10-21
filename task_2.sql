@@ -1,4 +1,7 @@
--- Connect to the alx_book_store database
+-- Create the database if it does not exist
+CREATE DATABASE IF NOT EXISTS alx_book_store;
+
+-- Use the created database
 USE alx_book_store;
 
 -- Create the authors table

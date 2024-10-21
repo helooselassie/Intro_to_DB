@@ -1,10 +1,8 @@
--- Create the database if it does not exist
-CREATE DATABASE IF NOT EXISTS alx_book_store;
-
--- Use the created database
+-- Connect to the alx_book_store database
 USE alx_book_store;
 
 -- Create the authors table
+-- Authors
 CREATE TABLE IF NOT EXISTS authors (
     author_id INT AUTO_INCREMENT PRIMARY KEY,
     author_name VARCHAR(215) NOT NULL

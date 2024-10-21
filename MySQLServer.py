@@ -8,23 +8,15 @@ def create_database():
             host="localhost",
             user="root",
             password="Selassie@Hel00@2024",
-            port="3306"
         )
 
         if mydb.is_connected():
             cursor = mydb.cursor()
             
-            # Attempt to create the database (assumes failure if the database exists)
-            try:
-                cursor.execute("CREATE DATABASE alx_book_store")
-                print("Database 'alx_book_store' created successfully!")
-            except Error as e:
-                # Handle the specific error for existing database gracefully
-                if "1007" in str(e):
-                    print("Database 'alx_book_store' already exists, no action needed.")
-                else:
-                    print(f"Error occurred: {e}")
-
+            # Attempt to create the database using IF NOT EXISTS
+            cursor.execute("CREATE DATABASE IF NOT EXISTS alx_book_store")
+            print("Database 'alx_book_store' created successfully or already exists.")
+            
             # Close the cursor
             cursor.close()
 

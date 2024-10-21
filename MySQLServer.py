@@ -8,7 +8,6 @@ def create_database():
             host="localhost",
             user="root",
             password="Selassie@Hel00@2024",
-            port="3306"
         )
 
         if mydb.is_connected():

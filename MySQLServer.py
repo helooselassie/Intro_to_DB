@@ -21,7 +21,7 @@ def create_database():
             # Close the cursor
             cursor.close()
 
-    except Error as e:
+    except mysql.connector.Error as e:
         print(f"Error: {e}")
     finally:
         if mydb.is_connected():
